@@ -61,7 +61,7 @@ class webqq:
         cookies += ";" "; ".join(cs)
         print cs
 
-        login_url = 'https://ssl.ptlogin2.qq.com/login?u=1063918489@qq.com&p=' + str(QQmd5().md5_2('LKYs4690102', self.verifycode1, self.verifycode2)) + '&verifycode=' + self.verifycode1 + '&webqq_type=10&remember_uin=1&login2qq=1&aid=1003903&u1=http%3A%2F%2Fweb.qq.com%2Floginproxy.html%3Flogin2qq%3D1%26webqq_type%3D10&h=1&ptredirect=0&ptlang=2052&from_ui=1&pttype=1&dumy=&fp=loginerroralert&action=2-14-32487&mibao_css=m_webqq&t=1&g=1&js_type=0&js_ver=10015&login_sig=0IHP3T5GHFoOnsSLE-98x9hy4UaQmPVu*8*OdGl5vyereLcB8Fk-y3TS6C3*7E8-'
+        login_url = 'https://ssl.ptlogin2.qq.com/login?u=1063918489@qq.com&p=' + str(QQmd5().md5_2('密码', self.verifycode1, self.verifycode2)) + '&verifycode=' + self.verifycode1 + '&webqq_type=10&remember_uin=1&login2qq=1&aid=1003903&u1=http%3A%2F%2Fweb.qq.com%2Floginproxy.html%3Flogin2qq%3D1%26webqq_type%3D10&h=1&ptredirect=0&ptlang=2052&from_ui=1&pttype=1&dumy=&fp=loginerroralert&action=2-14-32487&mibao_css=m_webqq&t=1&g=1&js_type=0&js_ver=10015&login_sig=0IHP3T5GHFoOnsSLE-98x9hy4UaQmPVu*8*OdGl5vyereLcB8Fk-y3TS6C3*7E8-'
         req = urllib2.Request(login_url)
         req.add_header("Referer", "https://ui.ptlogin2.qq.com/cgi-bin/login?target=self&style=5&mibao_css=m_webqq&appid=1003903&enable_qlogin=0&no_verifyimg=1&s_url=http%3A%2F%2Fweb.qq.com%2Floginproxy.html&f_url=loginerroralert&strong_login=1&login_state=10&t=20121029001")
         req.add_header("Cookie", cookies)
