@@ -114,12 +114,8 @@ class webqq:
 if __name__ == "__main__":
     #user = raw_input('QQ:')
     #pwd = getpass.getpass('password: ')
-
-    #user = '1063918489'
-    #pwd = 'LKYs4690102'
-
     user = 'atupal@qq.com'
-    pwd = 'LKYs4690102@$'
+    pwd = 'atupal@qq.com'
     qq = webqq(user, pwd)
     qq.getSafeCode()
     qq.loginGet()
