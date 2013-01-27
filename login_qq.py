@@ -36,9 +36,21 @@ class webqq:
         #cs = ['%s=%s' %  (c.name, c.value) for c in self.cookies]
         #self.mycookie += ";".join(cs)
         verifycode = re.search(r"'(\d)','(.+)','(.+)'", req.read())
+        self.check = verifycode.group(1)
+        if self.check == "1":
+            url = 'https://ssl.captcha.qq.com/getimage?&uin='+str(self.user)+'&aid=1002101&0.45644426648505' + str(random.randint(10,99))
+            req = urllib2.Request(url)
+            req = urllib2.urlopen(req)
+            self.fi = open("./image.jgp", "wb")
+            while 1:
+                c = req.read()
+                if not c:
+                    break
+                else :self.fi.write(c)
+            self.fi.close()
         self.verifycode1 = verifycode.group(2)
         self.verifycode2 = verifycode.group(3)
-        print self.verifycode1, self.verifycode2
+        print self.check, self.verifycode1, self.verifycode2
 
     def loginGet(self):
         #cs = ['%s=%s' %  (c.name, c.value) for c in self.cookies]

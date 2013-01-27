@@ -31,4 +31,4 @@ if __name__ == '__main__':
     qqmd5 = QQmd5()
     verifycode1 = raw_input("1:")
     verifycode2 = raw_input("2:")
-    print qqmd5.md5_2("atupao@qq.com", verifycode1, verifycode2)
+    print qqmd5.md5_2("atupal@qq.com", verifycode1, verifycode2)
