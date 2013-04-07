@@ -25,7 +25,8 @@ class webqq:
         self.pwd = pwd
         self.mycookie = ";"
         #self.clientid = "21485768"
-        self.clientid = "34592990"
+        #self.clientid = "34592990"
+        self.clientid = str(random.randint(10000000, 99999999))
 
     def getSafeCode(self):
         url = 'https://ssl.ptlogin2.qq.com/check?uin=' + str(self.user) + '&appid=1003903&js_ver=10017&js_type=0&login_sig=0ihp3t5ghfoonssle-98x9hy4uaqmpvu*8*odgl5vyerelcb8fk-y3ts6c3*7e8-&u1=http%3A%2F%2Fweb2.qq.com%2Floginproxy.html&r=0.8210972726810724'
@@ -37,6 +38,8 @@ class webqq:
         #self.mycookie += ";".join(cs)
         verifycode = re.search(r"'(\d)','(.+)','(.+)'", req.read())
         self.check = verifycode.group(1)
+        self.verifycode1 = verifycode.group(2)
+        self.verifycode2 = verifycode.group(3)
         if self.check == "1":
             url = 'https://ssl.captcha.qq.com/getimage?&uin='+str(self.user)+'&aid=1002101&0.45644426648505' + str(random.randint(10,99))
             req = urllib2.Request(url)
@@ -48,8 +51,7 @@ class webqq:
                     break
                 else :self.fi.write(c)
             self.fi.close()
-        self.verifycode1 = verifycode.group(2)
-        self.verifycode2 = verifycode.group(3)
+            self.verifycode1 = raw_input("verifer:")
         print self.check, self.verifycode1, self.verifycode2
 
     def loginGet(self):
@@ -100,6 +102,11 @@ class webqq:
         req.add_header('Referer', 'http://s.web2.qq.com/proxy.html?v=20110412001&callback=1&id=1')
         req = urllib2.urlopen(req)
         self.friend = json.load(req)
+        print self.friend
+        pass
+
+    def getMeg(self):
+        print urllib2.urlopen('http://web2.qq.com/web2/get_msg_tip?uin=&tp=1&id=0&retype=1&rc=0&lv=3&t=1358252543124').read()
         pass
 
     def poll2(self):
@@ -121,22 +128,35 @@ class webqq:
         print urllib2.urlopen(req).read()
         pass
 
+    def sendQunMsg(self, uin, msg):
+        url = 'http://d.web2.qq.com/channel/send_qun_msg2'
+        data = 'r=%7B%22group_uin%22%3A'+uin+'%2C%22face%22%3A237%2C%22content'+urllib.quote(r'":"[\"'+msg+r'\",\"\\n【提示：此用户正在使用shift webQq】\",[\"font\",{\"name\":\"宋体\",\"size\":\"10\",\"style\":[0,0,0],\"color\":\"000000\"}]]","')+'msg_id%22%3A13190001%2C%22clientid%22%3A%22'+self.clientid+'%22%2C%22psessionid%22%3A%22'+self.result['result']['psessionid']+'%22%7D&clientid='+self.clientid+'&psessionid='+self.result['result']['psessionid']
+        req = urllib2.Request(url, data)
+        req.add_header('Referer', 'http://d.web2.qq.com/proxy.html?v=20110331002&callback=1&id=2')
+        print urllib2.urlopen(req).read()
+        pass
 
-
-if __name__ == "__main__":
-    #user = raw_input('QQ:')
-    #pwd = getpass.getpass('password: ')
-    user = 'atupal@qq.com'
-    pwd = 'atupal@qq.com'
+def main():
+    user = raw_input('QQ:')
+    pwd = getpass.getpass('password: ')
     qq = webqq(user, pwd)
     qq.getSafeCode()
     qq.loginGet()
     qq.loginPost()
     qq.getGroupList()
     qq.getFriend()
-    while 1:
+    while 0:
         time.sleep(0.5)
         qq.poll2()
     for i in range(100):
-        qq.sendMsg('2025595616', 'clientjsfzhiyong')
-        #qq.sendMsg('4272883853', 'geisf')
+        print 'to', qq.friend['result']['info'][0]['uin']
+        print 'to', qq.group['result']['gnamelist'][10]
+        #qq.sendMsg(str(qq.friend['result']['info'][0]['uin']), 'clientjsfzhiyong')
+        ms = ''
+        for _ in xrange(i):
+            ms += '。'
+        qq.sendQunMsg(str(qq.group['result']['gnamelist'][10]['gid']), ms)
+        #qq.sendMsg('2236071402', 'geisf')
+
+if __name__ == "__main__":
+    main()
