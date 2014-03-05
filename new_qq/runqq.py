@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  file   : runqq.py
+#  file   : license.py
 #  author : atupal
 #
 #  Copyright 2013 atupal [HUST university uniquestudio algorithm group] <me@atupal.org>
@@ -77,9 +77,9 @@ class runqq(threading.Thread):
         #user = os.environ['QQ']
         #pwd = os.environ['QQ_PASSWD']
         try:
-            import os
-            user = os.environ['QQ']
-            pwd = os.environ['QQ_PASSWD']
+            with open('./user') as fi:
+              user = fi.readline().strip()
+              pwd = fi.readline().strip()
         except:
             import getpass
             user = raw_input('QQ:')

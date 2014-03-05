@@ -243,7 +243,7 @@ class webqq(threading.Thread):
             cnt = 1
             while self.uin_user[cnt] == '0':
                 cnt += 1
-            ptwebqq_hash = getFriend2_hash.getFriend2_hash3(self.uin_user[cnt:], self.ptwebqq)
+            ptwebqq_hash = getFriend2_hash.getFriend2_hash4(self.uin_user[cnt:], self.ptwebqq)
             #data = 'r=%7B%22vfwebqq%22%3A%22'+self.result['result']['vfwebqq'] +'%22%7D'
             data = ('r=%7B%22h%22%3A%22hello%22%2C%22hash%22%3A%22'
                     +ptwebqq_hash+'%22%2C%22vfwebqq%22%3A%22'

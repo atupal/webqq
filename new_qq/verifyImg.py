@@ -1,6 +1,9 @@
 #!/usr/bin/python2
 # -*- coding: utf-8 -*-
-import Image
+try:
+  import Image
+except:
+  from PIL import Image
 import sys
 import getopt
 import time
