@@ -5,7 +5,7 @@ cliqq - The Hacker's qq
 的程序.
 
 自从上次wenqq改了hash算法后重新在new_webqq里实现了一遍，如果仍无法正常用，
-请移步[https://github.com/atupal/cliqq/tree/dev](cliqq)
+请移步 https://github.com/atupal/cliqq/tree/dev
 
 ## snapshot
 ![cliqq](http://atupal.qiniudn.com/cliqq.jpg)
