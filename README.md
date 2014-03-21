@@ -14,3 +14,7 @@ cliqq - The Hacker's qq
 ```
 python2 ./new_qq/runqq.py
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/atupal/webqq/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
